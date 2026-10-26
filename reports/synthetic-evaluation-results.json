@@ -1,0 +1,108 @@
+{
+  "scope": "Live SQL graph with real models; restricted read-only executor; synthetic ground truth",
+  "cases": [
+    {
+      "id": "user_count",
+      "question": "How many users are in users? Return exactly one column, the count.",
+      "fixture_database_match": true,
+      "generated_sql": "SELECT COUNT(*) AS count\nFROM reliability_fixture_8d2d4b5560.users\nLIMIT 10;",
+      "judge_verdict": "yes",
+      "status": "pass",
+      "expected_rows": 1,
+      "actual_rows": 1,
+      "expected_hash": "014afbc8098059d0f243b9b825be43093cbc76679daf7fe4d26f765933b55f46",
+      "actual_hash": "014afbc8098059d0f243b9b825be43093cbc76679daf7fe4d26f765933b55f46",
+      "final_answer_nonempty": true,
+      "seconds": 9.66
+    },
+    {
+      "id": "first_five_users",
+      "question": "Return exactly user_id, first_name, last_name for the first 5 users ordered by user_id ascending.",
+      "fixture_database_match": true,
+      "generated_sql": "SELECT user_id, first_name, last_name\nFROM reliability_fixture_8d2d4b5560.users\nORDER BY user_id ASC\nLIMIT 5;",
+      "judge_verdict": "yes",
+      "status": "pass",
+      "expected_rows": 5,
+      "actual_rows": 5,
+      "expected_hash": "722633c1af917e8f9a57dcf3a483adb1900d3a96592f5cea92c67dbcf9034b18",
+      "actual_hash": "722633c1af917e8f9a57dcf3a483adb1900d3a96592f5cea92c67dbcf9034b18",
+      "final_answer_nonempty": true,
+      "seconds": 8.69
+    },
+    {
+      "id": "active_users",
+      "question": "How many users have is_active equal to true? Return exactly one column, the count.",
+      "fixture_database_match": true,
+      "generated_sql": "SELECT COUNT(*) AS count\nFROM reliability_fixture_8d2d4b5560.users\nWHERE is_active = TRUE\nLIMIT 10;",
+      "judge_verdict": "yes",
+      "status": "pass",
+      "expected_rows": 1,
+      "actual_rows": 1,
+      "expected_hash": "acc7ad66e60862e702d4a9ca7ada7eaafb9eca67e8ef075fae23b4f2ae0c55e0",
+      "actual_hash": "acc7ad66e60862e702d4a9ca7ada7eaafb9eca67e8ef075fae23b4f2ae0c55e0",
+      "final_answer_nonempty": true,
+      "seconds": 6.31
+    },
+    {
+      "id": "payment_total",
+      "question": "What is the sum of amount across all payments? Return exactly one numeric column rounded to 2 decimal places, without a currency symbol.",
+      "fixture_database_match": true,
+      "generated_sql": "SELECT ROUND(SUM(amount), 2) AS total_amount\nFROM reliability_fixture_8d2d4b5560.payments\nLIMIT 10;",
+      "judge_verdict": "yes",
+      "status": "pass",
+      "expected_rows": 1,
+      "actual_rows": 1,
+      "expected_hash": "253e27356b51d2cde166b7330a1ac31d1e1442f9075ebb4f9b0c489d6761d9c6",
+      "actual_hash": "253e27356b51d2cde166b7330a1ac31d1e1442f9075ebb4f9b0c489d6761d9c6",
+      "final_answer_nonempty": true,
+      "seconds": 6.16
+    },
+    {
+      "id": "top_riders_join",
+      "question": "Join users to rides on users.user_id = rides.rider_id. Return exactly user_id, first_name, count of rides for the 5 riders with the most rides. Include only users with rides. Sort by ride count descending, then user_id ascending.",
+      "fixture_database_match": true,
+      "generated_sql": "SELECT\n  u.user_id,\n  u.first_name,\n  COUNT(*) AS ride_count\nFROM reliability_fixture_8d2d4b5560.users AS u\nJOIN reliability_fixture_8d2d4b5560.rides AS r\n  ON u.user_id = r.rider_id\nGROUP BY u.user_id, u.first_name\nORDER BY ride_count DESC, u.user_id ASC\nLIMIT 5;",
+      "judge_verdict": "yes",
+      "status": "pass",
+      "expected_rows": 5,
+      "actual_rows": 5,
+      "expected_hash": "c998963b19ec856f28d863ad83211e2db65e59dd9635f1b765305a5a07563820",
+      "actual_hash": "c998963b19ec856f28d863ad83211e2db65e59dd9635f1b765305a5a07563820",
+      "final_answer_nonempty": true,
+      "seconds": 8.03
+    }
+  ],
+  "routing": [
+    {
+      "question": "List the first ten users in the PostgreSQL database.",
+      "expected": "sql",
+      "actual": "sql",
+      "status": "pass"
+    },
+    {
+      "question": "Extract an API into a CSV file and filter that file.",
+      "expected": "etl",
+      "actual": "etl",
+      "status": "pass"
+    }
+  ],
+  "limits": {
+    "max_model_calls": 24,
+    "model_timeout_seconds": 40,
+    "max_retries": 0
+  },
+  "excluded": [
+    "ETL generated Python execution",
+    "adversarial prompt suite",
+    "load testing",
+    "repeat-run stability"
+  ],
+  "context": "Only synthetic fixture schema and synthetic query results sent to model; no production schema or rows exported.",
+  "fixture_cleanup": "pass",
+  "model_calls": 22,
+  "input_tokens": 4160,
+  "output_tokens": 845,
+  "seconds": 43.91,
+  "sql_passed": 5,
+  "sql_attempted": 5
+}

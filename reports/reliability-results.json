@@ -1,0 +1,105 @@
+{
+  "suite": "offline regression",
+  "network": "blocked",
+  "api_calls": 0,
+  "live_database_calls": 0,
+  "duration_seconds": 0.157,
+  "total": 23,
+  "passed": 23,
+  "failures": 0,
+  "errors": 0,
+  "results": [
+    {
+      "test": "__main__.DatabaseTests.test_connection_failure_is_not_silently_swallowed",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.DatabaseTests.test_queries_use_read_only_transaction",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.DatabaseTests.test_query_failure_is_not_returned_as_none",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.EtlTests.test_csv_contains_expected_records",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.EtlTests.test_extraction_returns_success_message",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.EtlTests.test_failed_transform_does_not_claim_saved",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.EtlTests.test_graph_tool_roundtrip_preserves_each_message_once",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.EtlTests.test_http_failure_is_not_reported_as_success",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.EtlTests.test_http_request_has_finite_timeout",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.EtlTests.test_json_extraction_can_be_read_by_context_tool",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.EtlTests.test_missing_input_file_reports_error",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.EtlTests.test_unsupported_format_is_rejected",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.RoutingTests.test_etl_route_calls_only_etl",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.RoutingTests.test_router_failure_stops_before_execution",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.RoutingTests.test_sql_route_calls_only_sql",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.SchemaTests.test_initial_state_accepts_pending_review",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.SchemaTests.test_judge_rejects_unknown_verdict",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.SchemaTests.test_router_rejects_unknown_route",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.SourceChecks.test_env_file_is_gitignored",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.SourceChecks.test_python_sources_parse",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.SqlGraphTests.test_approved_sql_executes_exactly_once",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.SqlGraphTests.test_rejected_sql_never_executes",
+      "status": "pass"
+    },
+    {
+      "test": "__main__.SqlGraphTests.test_sql_history_does_not_duplicate_messages",
+      "status": "pass"
+    }
+  ]
+}

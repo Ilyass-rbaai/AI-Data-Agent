@@ -1,0 +1,28 @@
+{
+  "connectivity": "pass",
+  "safety": {
+    "transaction_read_only": "on",
+    "role_flags": {
+      "superuser": true,
+      "create_role": true,
+      "create_database": true
+    },
+    "users_write_privileges": {
+      "update": true,
+      "delete": true,
+      "insert": true
+    },
+    "write_in_readonly_sqlstate": "25006",
+    "write_in_readonly": "blocked",
+    "restricted_role_write": "blocked",
+    "restricted_role_sqlstate": "42501",
+    "after_readwrite_override": "write_permission_available"
+  },
+  "tables": [
+    "payments",
+    "ratings",
+    "rides",
+    "users",
+    "vehicles"
+  ]
+}

@@ -1,0 +1,23 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Local credentials and pre-change source backups
+.env
+.env.*
+!.env.example
+reliability-backup/
+
+# Données locales, exports et sauvegardes de développement
+data/
+schema_details.txt
+*.before_*.py
+.pytest_cache/
+.ruff_cache/

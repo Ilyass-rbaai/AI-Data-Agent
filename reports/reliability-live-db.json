@@ -1,0 +1,5 @@
+{
+  "scope": "Live PostgreSQL connection and read-only SELECT only; no data modifications",
+  "status": "unverified",
+  "error_type": "OperationalError"
+}
